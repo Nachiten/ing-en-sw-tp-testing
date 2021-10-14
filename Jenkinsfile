@@ -5,7 +5,7 @@ pipeline {
       steps {
         git(url: 'https://github.com/resLotus/tp-ingenieria-en-software-grupo-3-spring-boot-jpetstore', branch: 'master')
         withGradle() {
-          sh 'sh \'./gradlew build\''
+          bat 'gradle build'
         }
 
       }
