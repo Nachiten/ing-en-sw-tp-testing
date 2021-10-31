@@ -5,7 +5,8 @@ pipeline {
       steps {
         git(url: 'https://github.com/Nachiten/ing-en-sw-tp-testing', branch: 'master')
         withGradle() {
-          sh './gradlew build'
+          sh '''echo Building Proyect
+./gradlew build'''
         }
 
       }
@@ -13,19 +14,34 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh './gradlew test'
+        sh '''echo Testing Proyect
+./gradlew test'''
       }
     }
 
     stage('Validate') {
       steps {
-        sh './gradlew check'
+        sh '''echo Validating Proyect
+./gradlew check'''
+      }
+    }
+
+    stage('Analyse') {
+      environment {
+        SONARQUBE_PROYECT = 'credentials(\'sonarqube-project\')'
+        SONARQUBE_URL = 'credentials(\'sonarqube-url\')'
+        SONARQUBE_TOKEN = 'credentials(\'sonarqube-token\')'
+      }
+      steps {
+        sh '''echo Analysing Proyect
+sh \'./gradlew sonarqube -Dsonar.projectKey=$SONARQUBE_PROYECT -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_TOKEN --stacktrace\''''
       }
     }
 
     stage('Deploy') {
       steps {
-        sh './gradlew bootRun'
+        sh '''echo Deploying Proyect
+./gradlew bootRun'''
       }
     }
 
