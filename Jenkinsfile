@@ -27,14 +27,8 @@ pipeline {
     }
 
     stage('Analyse') {
-      environment {
-        SONARQUBE_PROYECT = 'credentials(\'sonarqube-project\')'
-        SONARQUBE_URL = 'credentials(\'sonarqube-url\')'
-        SONARQUBE_TOKEN = 'credentials(\'sonarqube-token\')'
-      }
-      steps {
-        sh '''echo Analysing Proyect
-./gradlew sonarqube -Dsonar.projectKey=$SONARQUBE_PROYECT -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_TOKEN --stacktrace'''
+      withSonarQubeEnv() {
+        sh "./gradlew sonarqube"
       }
     }
 
