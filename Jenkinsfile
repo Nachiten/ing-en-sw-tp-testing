@@ -34,7 +34,7 @@ pipeline {
       }
       steps {
         sh '''echo Analysing Proyect
-sh \'./gradlew sonarqube -Dsonar.projectKey=$SONARQUBE_PROYECT -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_TOKEN --stacktrace\''''
+./gradlew sonarqube -Dsonar.projectKey=$SONARQUBE_PROYECT -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_TOKEN --stacktrace'''
       }
     }
 
