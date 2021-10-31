@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        git(url: 'https://github.com/resLotus/tp-ingenieria-en-software-grupo-3-spring-boot-jpetstore', branch: 'master')
+        git(url: 'https://github.com/Nachiten/ing-en-sw-tp-testing', branch: 'master')
         withGradle() {
           bat 'gradle build'
         }
