@@ -5,7 +5,7 @@ pipeline {
       steps {
         git(url: 'https://github.com/Nachiten/ing-en-sw-tp-testing', branch: 'master')
         withGradle() {
-          sh 'gradlew build'
+          sh './gradlew build'
         }
 
       }
