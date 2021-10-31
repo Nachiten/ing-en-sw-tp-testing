@@ -13,19 +13,19 @@ pipeline {
 
     stage('Test') {
       steps {
-        bat 'gradle test'
+        sh './gradlew test'
       }
     }
 
     stage('Validate') {
       steps {
-        bat 'gradlew check'
+        sh './gradlew check'
       }
     }
 
     stage('Deploy') {
       steps {
-        bat 'gradlew bootRun'
+        sh './gradlew bootRun'
       }
     }
 
