@@ -35,7 +35,10 @@ pipeline {
     stage('Jacoco') {
       steps {
         echo 'Generating Jacoco Test Report'
-        sh './gradlew -i test jacocoTestReport --stacktrace'
+        sh '''./gradlew -i test jacocoTestReport --stacktrace
+git add .
+git commit -m "testing jenkins"
+git push originNachiten master'''
       }
     }
 
