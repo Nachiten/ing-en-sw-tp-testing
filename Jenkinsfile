@@ -32,6 +32,13 @@ pipeline {
       }
     }
 
+    stage('Jacoco') {
+      steps {
+        echo 'Generating Jacoco Test Report'
+        sh './gradlew -i test jacocoTestReport --stacktrace'
+      }
+    }
+
     stage('Deploy') {
       steps {
         sh '''echo Deploying Proyect
