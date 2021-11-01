@@ -8,6 +8,15 @@ plugins {
     id "jacoco"
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled true
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
 version = "2.36.0-beta-1"
 def dependentVersion = version
 def domaSpringBootVersion = "1.4.0"
