@@ -28,7 +28,7 @@ pipeline {
 
     stage('Analyse') {
       steps {
-        sh './gradlew sonarqube -Dsonar.projectKey=IngEnSw -Dsonar.host.url=http://localhost:9000/ -Dsonar.login=0e991cebaaf94404769566bba7b7bfca04e49559 --stacktrace'
+        sh './gradlew sonarqube -Dsonar.projectKey=IngEnSw -Dsonar.host.url=http://sonarqube:9000/ -Dsonar.login=0e991cebaaf94404769566bba7b7bfca04e49559 --stacktrace'
       }
     }
 
