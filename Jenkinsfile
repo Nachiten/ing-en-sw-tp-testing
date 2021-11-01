@@ -40,6 +40,9 @@ pipeline {
     }
 
     stage('Deploy') {
+      environment {
+        SERVER_PORT = '8888'
+      }
       steps {
         sh '''echo Deploying Proyect
 ./gradlew bootRun'''
