@@ -28,19 +28,16 @@ pipeline {
 
     stage('Analyse') {
       steps {
-        sh './gradlew sonarqube -Dsonar.projectKey=IngEnSw -Dsonar.host.url=http://sonarqube:9000/ -Dsonar.login=0e991cebaaf94404769566bba7b7bfca04e49559 --stacktrace'
+        sh '''echo Analysing Proyect
+./gradlew sonarqube -Dsonar.projectKey=IngEnSw -Dsonar.host.url=http://sonarqube:9000/ -Dsonar.login=0e991cebaaf94404769566bba7b7bfca04e49559 --stacktrace'''
       }
     }
 
     stage('Jacoco') {
       steps {
         echo 'Generating Jacoco Test Report'
-        sh '''./gradlew -i test jacocoTestReport --stacktrace
-git add .
-git config --global user.email "jenkins@test.com"
-git config --global user.name "Jenkins Pipeline"
-git commit -m "testing jenkins"
-git push originNachiten master'''
+        sh '''echo Running Jacoco Test
+./gradlew -i test jacocoTestReport --stacktrace'''
       }
     }
 
