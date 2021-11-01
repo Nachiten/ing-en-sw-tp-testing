@@ -44,8 +44,7 @@ pipeline {
         SERVER_PORT = '8888'
       }
       steps {
-        sh '''echo Deploying Proyect
-./gradlew bootRun'''
+        sh 'echo Deploying Proyect...'
       }
     }
 
