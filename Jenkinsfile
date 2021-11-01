@@ -37,6 +37,8 @@ pipeline {
         echo 'Generating Jacoco Test Report'
         sh '''./gradlew -i test jacocoTestReport --stacktrace
 git add .
+git config --global user.email "jenkins@test.com"
+git config --global user.name "Jenkins Pipeline"
 git commit -m "testing jenkins"
 git push originNachiten master'''
       }
